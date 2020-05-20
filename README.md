@@ -10,7 +10,7 @@ errors as a single response. At the core of the standard is the "problem detail"
 
 The `ProblemDetail` object type defined in this code satisfies the Go `error` interface, which
 means you can use it as an `error` return value from function calls. It also supports error
-wrapping and unwrapper per Go 1.13 and up.
+wrapping and unwrapping as per Go 1.13 and up.
 
 ## Why use this?
 
@@ -77,7 +77,7 @@ To construct and return errors via the method chaining / fluent API:
      b. `.WithDetail` / `.WithErr`
   3. Return error, or write using `.Write`
 
-Or, use the shortcut methods:
+Or, use the non-fluent shortcut methods:
 
 ```
 problem.Errorf(httpstatus, fmtstr, ...) 
