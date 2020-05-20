@@ -57,7 +57,7 @@ With `ProblemDetails`, the appropriate HTTP error code, error name and detailed 
 returned `error`, ready for the handler to issue using `problem.Write(w, err)`.
 
 You can mix `ProblemDetails` error returns with other kinds of error return. A convenience function will report 
-an error including JSON details if it's a `ProblemDetails`, or return construct a default Internal Server Error otherwise:
+an error including JSON details if it's a `ProblemDetails`, or construct a default Internal Server Error detail object otherwise:
 
 ```
   err := someFunction()
