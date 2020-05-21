@@ -1,6 +1,8 @@
 
 # problem
 
+[![GoDoc](https://godoc.org/github.com/lpar/problem?status.svg)](https://godoc.org/github.com/lpar/problem)
+
 This is an implementation of [RFC 7807](https://tools.ietf.org/html/rfc7807) for Go.
 
 RFC 7807 attempts to standardize HTTP errors into a machine-readable format 
