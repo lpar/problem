@@ -20,7 +20,7 @@ func TestNewValidationProblem(t *testing.T) {
 	w := httptest.NewRecorder()
 	problem.MustWrite(w, valerr)
 	resp := w.Result()
-	body,_ := ioutil.ReadAll(resp.Body)
+	body, _ := ioutil.ReadAll(resp.Body)
 	prob := problem.ValidationProblem{}
 	err := json.Unmarshal(body, &prob)
 	if err != nil {

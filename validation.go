@@ -20,9 +20,9 @@ type ValidationError struct {
 }
 
 // NewValidationProblem creates an object to represent a server-side validation error.
-func NewValidationProblem() *ValidationProblem{
+func NewValidationProblem() *ValidationProblem {
 	return &ValidationProblem{
-		ProblemDetails: ProblemDetails{ Status: http.StatusBadRequest, Detail: "Validation error"},
+		ProblemDetails:   ProblemDetails{Status: http.StatusBadRequest, Detail: "Validation error"},
 		ValidationErrors: []ValidationError{},
 	}
 }

@@ -45,7 +45,7 @@ func TestForStatus(t *testing.T) {
 }
 
 func TestNew(t *testing.T) {
-	testdata := []struct{
+	testdata := []struct {
 		Status int
 		Detail string
 	}{
@@ -73,9 +73,9 @@ func testNew(t *testing.T, status int, msg string) {
 	if ct != problem.ContentProblemDetails {
 		t.Errorf("got content-type %s expected %s", ct, problem.ContentProblemDetails)
 	}
-	body,_ := ioutil.ReadAll(resp.Body)
+	body, _ := ioutil.ReadAll(resp.Body)
 	prob = &problem.ProblemDetails{}
- err := json.Unmarshal(body, prob)
+	err := json.Unmarshal(body, prob)
 	if err != nil {
 		t.Error(err)
 	}
@@ -102,7 +102,7 @@ func roundTrip(t *testing.T, err error) problem.ProblemDetails {
 	w := httptest.NewRecorder()
 	problem.MustWrite(w, err)
 	resp := w.Result()
-	body,_ := ioutil.ReadAll(resp.Body)
+	body, _ := ioutil.ReadAll(resp.Body)
 	prob := problem.ProblemDetails{}
 	err = json.Unmarshal(body, &prob)
 	if err != nil {
