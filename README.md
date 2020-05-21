@@ -102,3 +102,43 @@ problem.MustReport(w, err)
 // uses StatusInternalError if err isn't a problem details object
 ```
 
+## Example
+
+Suppose I have a decodeRequest method which starts like this:
+
+```
+func decodeRequest(r *http.Request) (int64, error) {
+	id := chi.URLParam(r, "id")
+	nid, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return 0, problem.New(http.StatusBadRequest).Errorf("can't parse ID: %w", err)
+	}
+...
+```
+
+This is called by a handler:
+
+```
+func GetLocation(w http.ResponseWriter, r *http.Request) {
+	id, err := rest.decodeRequest(r)
+	if err != nil {
+		problem.MustWrite(w, err)
+		return
+	}
+...
+```
+
+A GET with an invalid ID then results in this API response:
+
+```
+HTTP/1.1 400 Bad Request
+Content-Type: application/problem+json
+
+{
+  "status": 400,
+  "title": "Bad Request",
+  "detail": "can't parse ID: strconv.ParseInt: parsing \"che3\": invalid syntax",
+  "type": "https://httpstatuses.com/400"
+}
+```
+
