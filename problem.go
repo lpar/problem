@@ -78,7 +78,7 @@ var typeForStatus = map[int]string{
 	http.StatusRequestHeaderFieldsTooLarge:   "Request Header Fields Too Large",
 	http.StatusUnavailableForLegalReasons:    "Unavailable For Legal Reasons",
 	499:                                      "Client Closed Request",
-	http.StatusInternalServerError:           "Internal Server New",
+	http.StatusInternalServerError:           "Internal Server Error",
 	http.StatusNotImplemented:                "Not Implemented",
 	http.StatusBadGateway:                    "Bad Gateway",
 	http.StatusServiceUnavailable:            "Service Unavailable",
